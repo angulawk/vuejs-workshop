@@ -9,15 +9,17 @@
         <h1>TODO list</h1>
         <form>
             <label for="">New task: </label>
-            <input type="text"
-            v-model="taskInput" 
-            @keydown.enter="addTask($event, $event.target.value)">
+            <input v-model="taskInput" @keydown.enter="addTask($event)" type="text">
+            <a @click="addTask($event)">[Add Task]</a>
+            <a>[Clear Tasks]</a>
         </form>
         <ul v-for="task in tasks">
            <li>{{ task }}</li>
         </ul>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="main.js"></script>
+    <script src="http:/js/vue.js"></script>
+    <script src="http:/js/axios.js"></script>
+    <script src="main.js">
+    </script>
 </body>
 </html>
