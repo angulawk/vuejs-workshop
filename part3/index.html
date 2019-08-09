@@ -8,18 +8,16 @@
 </head>
 <body>
     <div id="app">
-        <div v-for="hero in team" style="border:1px solid black">
-            <form>
-                <h1>Insert title here</h1>
-                <label for="">New task: </label>
-                <input type="text"
-                v-model="taskInput" 
-                @keydown.enter="addTask($event)">
-                <ul v-for="task in tasks">
-                    <li>{{ task }}</li>
-                </ul>
-            </form>
-        </div> 
+        <form>
+            <h1>TODO List</h1>
+            <label for="">New task: </label>
+            <input type="text"
+            v-model="taskInput" 
+            @keydown.enter="addTask($event)">
+            <ul v-for="task in tasks">
+                <li>{{ task }}</li>
+            </ul>
+        </form>
     </div>
     <script>
         const app = new Vue({
