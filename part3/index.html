@@ -1,39 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>TODO List</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="TodoList.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div id="app">
-        <form>
-            <h1>TODO List</h1>
-            <label for="">New task: </label>
-            <input type="text"
-            v-model="taskInput" 
-            @keydown.enter="addTask($event)">
-            <ul v-for="task in tasks">
-                <li>{{ task }}</li>
-            </ul>
-        </form>
+      <todo-list></todo-list>
     </div>
     <script>
-        const app = new Vue({
-            el: '#app',
-            data: {
-                taskInput: "",
-                tasks: [ "Read a book", "Seed a tree" ],
-            },
-            methods: {
-                addTask(event) {
-                    event.preventDefault();
-                    this.tasks.push(this.taskInput)
-                    this.taskInput = ''
-                }
-            }
-        })
+      const app = new Vue({
+        el: "#app"
+      });
     </script>
-</body>
+  </body>
 </html>

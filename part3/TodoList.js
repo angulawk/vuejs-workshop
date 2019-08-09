@@ -1,10 +1,28 @@
-Vue.component('todo-list', {
-    data() {
-        return {
-        }
-    },
-    props: [],
-    methods: {
-    },
-    template: ``,
-})
+Vue.component("todo-list", {
+  data() {
+    return {
+      taskInput: "",
+      tasks: ["Read a book", "Seed a tree"]
+    };
+  },
+  props: [],
+  methods: {
+    addTask(event) {
+      event.preventDefault();
+      this.tasks.push(this.taskInput);
+      this.taskInput = "";
+    }
+  },
+  template: `
+    <form>
+        <h1>TODO List</h1>
+        <label for="">New task: </label>
+        <input type="text"
+        v-model="taskInput" 
+        @keydown.enter="addTask($event)">
+        <ul v-for="task in tasks">
+            <li>{{ task }}</li>
+        </ul>
+    </form>
+    `
+});
