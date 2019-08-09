@@ -6,18 +6,31 @@
 </head>
 <body>
     <div id="app">
-        <h1>TODO list</h1>
         <form>
+            <h1>TODO list</h1>
             <label for="">New task: </label>
             <input type="text"
             v-model="taskInput" 
-            @keydown.enter="addTask($event, $event.target.value)">
+            @keydown.enter="addTask($event)">
+            <ul v-for="task in tasks">
+                <li>{{ task }}</li>
+            </ul>
         </form>
-        <ul v-for="task in tasks">
-           <li>{{ task }}</li>
-        </ul>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="main.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                taskInput: "",
+                tasks: [ "Read a book", "Seed a tree" ],
+            },
+            methods: {
+                addTask(event, task) {
+                    event.preventDefault();
+                }
+            },
+        })
+    </script>
 </body>
 </html>
