@@ -9,7 +9,16 @@
 <body>
     <div id="app">
         <div v-for="hero in team" style="border:1px solid black">
-            <todo-list :title="hero.name"></todo-list>
+            <form>
+                <h1>Insert title here</h1>
+                <label for="">New task: </label>
+                <input type="text"
+                v-model="taskInput" 
+                @keydown.enter="addTask($event)">
+                <ul v-for="task in tasks">
+                    <li>{{ task }}</li>
+                </ul>
+            </form>
         </div> 
     </div>
     <script>
@@ -17,19 +26,14 @@
             el: '#app',
             data: {
                 taskInput: "",
-                team: [
-                    {
-                        name: 'Thor'
-                    },
-                    {
-                        name: 'Hulk'
-                    },
-                    {
-                        name: 'IromMan'
-                    },
-                ]
+                tasks: [ "Read a book", "Seed a tree" ],
             },
             methods: {
+                addTask(event) {
+                    event.preventDefault();
+                    this.tasks.push(this.taskInput)
+                    this.taskInput = ''
+                }
             }
         })
     </script>
